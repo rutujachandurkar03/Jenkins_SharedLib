@@ -6,9 +6,6 @@ def call(String CredId, String ProjectName, String ImageTag){
         // Docker login using the credentials
         sh "echo $dockerHubPass | docker login -u $dockerHubUser --password-stdin"
         
-        // Tag the Docker image
-        sh "docker image tag ${dockerHubUser}/${ProjectName}:${ImageTag}"
-        
         // Push the Docker image
         sh "docker push ${dockerHubUser}/${ProjectName}:${ImageTag}"
     }
